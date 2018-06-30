@@ -1,27 +1,29 @@
 #ifndef PERIPHERALS_H_
 #define PERIPHERALS_H_
+
+#include <vector>
  
 #define BCM2837_PERI_BASE 0x3F000000
  
 class Peripherals{
     private:
-    static int* usedPins;
-    int numOfPins;
-    // IO Acces
+    static std::vector<int> usedPins;
     struct{
-        unsigned long addr_p;
+        uint32_t addr_p;
         int mem_fd;
         void *map;
-        volatile unsigned int *addr;
+        volatile uint32_t *addr;
     }bcm2837_peripheral;
-
 	int map_peripheral();
-	void unmap_peripheral();
 
     protected:
-	Peripherals();
+    Peripherals(uint32_t address_base);
+    uint32_t* getAddr();
 	//add used pin to the usedPin array
 	void insertPin(int pin);
+    void unmap_peripheral();
+
+    public:
 	void cleanup();
 }
 
