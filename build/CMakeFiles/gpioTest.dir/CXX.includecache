@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/GPIO.h
+Peripherals.h
+../include/Peripherals.h
+
+../include/Peripherals.h
+
+/home/earsuit/code/Peripherals/src/Peripherals.cpp
+stdio.h
+-
+sys/mman.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+unistd.h
+-
+fcntl.h
+-
+Peripherals.h
+/home/earsuit/code/Peripherals/src/Peripherals.h
+
+/home/earsuit/code/Peripherals/src/main.cpp
+Peripherals.h
+/home/earsuit/code/Peripherals/src/Peripherals.h
+GPIO.h
+/home/earsuit/code/Peripherals/src/GPIO.h
+unistd.h
+-
+
