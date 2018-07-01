@@ -2,6 +2,7 @@
 #define GPIO_H_
 
 #include "Peripherals.h"
+#include <stdint.h>
 
 // #define GPIO_IN(PIN) *(gpio.addr+(PIN/10)) &= ~(7<<((PIN%10)*3))
 // #define GPIO_OUT(PIN) *(gpio.addr+(PIN/10)) = (GPIO_IN(PIN)) | (1<<((PIN%10)*3))
@@ -48,8 +49,8 @@
 #define GPIO_LOW(PIN) *(addr+((PIN<=31)?10:11))
 #define GPIO_LEVEL(PIN) *(addr+((PIN<=31)?13:14))
 #define GPIO_EVENT(PIN) *(addr+((PIN<=31)?type:(type+1)))
-#define GPIO_PULL *(gpio.addr+37)
-#define GPIO_PULL_CLOCK(PIN) *(gpio.addr+((PIN<=31)?38:39))
+#define GPIO_PULL *(addr+37)
+#define GPIO_PULL_CLOCK(PIN) *(addr+((PIN<=31)?38:39))
 
 #define HIGH 1
 #define LOW 0
@@ -81,6 +82,7 @@ class GPIO: public Peripherals{
     void pullUpDownOff();
     //GPIO Pull-up/down Clock Registers (GPPUDCLKn) 
     void clock(int pin);
-}
+    void cleanup();
+};
 
 #endif

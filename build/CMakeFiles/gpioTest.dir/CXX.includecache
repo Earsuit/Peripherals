@@ -9,11 +9,25 @@
 ../include/GPIO.h
 Peripherals.h
 ../include/Peripherals.h
+stdint.h
+-
 
 ../include/Peripherals.h
+vector
+-
+stdint.h
+-
+
+/home/earsuit/code/Peripherals/src/GPIO.cpp
+GPIO.h
+/home/earsuit/code/Peripherals/src/GPIO.h
 
 /home/earsuit/code/Peripherals/src/Peripherals.cpp
 stdio.h
+-
+stdint.h
+-
+vector
 -
 sys/mman.h
 -
@@ -24,6 +38,8 @@ sys/stat.h
 unistd.h
 -
 fcntl.h
+-
+algorithm
 -
 Peripherals.h
 /home/earsuit/code/Peripherals/src/Peripherals.h

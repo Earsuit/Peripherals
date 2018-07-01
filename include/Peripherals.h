@@ -2,6 +2,7 @@
 #define PERIPHERALS_H_
 
 #include <vector>
+#include <stdint.h>
  
 #define BCM2837_PERI_BASE 0x3F000000
  
@@ -20,11 +21,11 @@ class Peripherals{
     Peripherals(uint32_t address_base);
     uint32_t* getAddr();
 	//add used pin to the usedPin array
+    int* getUsedPins();
+    int getNumUsedPins();
 	void insertPin(int pin);
     void unmap_peripheral();
-
-    public:
 	void cleanup();
-}
+};
 
 #endif

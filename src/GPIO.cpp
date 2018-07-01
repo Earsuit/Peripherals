@@ -17,32 +17,40 @@ void GPIO::setLow(int pin){
 }
 
 int GPIO::pinLevel(int pin){
-    if(GPIO_LEVEL(pin) & (1<<(PIN%31)))
+    if(GPIO_LEVEL(pin) & (1<<(pin%31)))
         return HIGH;
     else
         return LOW;
 }
 
 void GPIO::eventDetectOn(int pin, int type){
-    GPIO_EVENT(pin) |= (1<<(PIN%31));
+    GPIO_EVENT(pin) |= (1<<(pin%31));
 }
 
 void GPIO::eventDetectOff(int pin, int type){
-    GPIO_EVENT(pin) &= ~(1<<(PIN%31));
+    GPIO_EVENT(pin) &= ~(1<<(pin%31));
 }
 
-void pullUp(){
+void GPIO::pullUp(){
     GPIO_PULL = 0x02;
 }
 
-void pullDown(){
+void GPIO::pullDown(){
     GPIO_PULL = 0x01;
 }
 
-void pullUpDownOff(){
+void GPIO::pullUpDownOff(){
     GPIO_PULL = 0x00;
 }
 
-void clock(int pin){
-    GPIO_PULL_CLOCK(pin) = (1<<(PIN%31));
+void GPIO::clock(int pin){
+    GPIO_PULL_CLOCK(pin) = (1<<(pin%31));
+}
+
+void GPIO::cleanup(){
+    int* pins = getUsedPins();
+    int size = getNumUsedPins();
+    for(int i=0;i<size;i++)
+        pinMode(pins[i],INPUT);
+    Peripherals::cleanup();
 }

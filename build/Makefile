@@ -123,6 +123,33 @@ gpioTest/fast:
 	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/build
 .PHONY : gpioTest/fast
 
+src/GPIO.o: src/GPIO.cpp.o
+
+.PHONY : src/GPIO.o
+
+# target to build an object file
+src/GPIO.cpp.o:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/GPIO.cpp.o
+.PHONY : src/GPIO.cpp.o
+
+src/GPIO.i: src/GPIO.cpp.i
+
+.PHONY : src/GPIO.i
+
+# target to preprocess a source file
+src/GPIO.cpp.i:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/GPIO.cpp.i
+.PHONY : src/GPIO.cpp.i
+
+src/GPIO.s: src/GPIO.cpp.s
+
+.PHONY : src/GPIO.s
+
+# target to generate assembly for a file
+src/GPIO.cpp.s:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/GPIO.cpp.s
+.PHONY : src/GPIO.cpp.s
+
 src/Peripherals.o: src/Peripherals.cpp.o
 
 .PHONY : src/Peripherals.o
@@ -186,6 +213,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... gpioTest"
+	@echo "... src/GPIO.o"
+	@echo "... src/GPIO.i"
+	@echo "... src/GPIO.s"
 	@echo "... src/Peripherals.o"
 	@echo "... src/Peripherals.i"
 	@echo "... src/Peripherals.s"

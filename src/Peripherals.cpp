@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdint.h>
+#include <vector>
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -6,6 +8,8 @@
 #include <fcntl.h>
 #include <algorithm>    //std::find
 #include "Peripherals.h"
+
+std::vector<int> Peripherals::usedPins;
   
 // Exposes the physical address defined in the passed structure using mmap on /dev/mem
 int Peripherals::map_peripheral()
@@ -43,8 +47,16 @@ Peripherals::Peripherals(uint32_t address_base){
     map_peripheral();
 }
 
-uint32_t* getAddr(){
-    return this->bcm2837_peripheral.addr;
+uint32_t* Peripherals::getAddr(){
+    return (uint32_t*)this->bcm2837_peripheral.addr;
+}
+
+int* Peripherals::getUsedPins(){
+    return usedPins.data();
+}
+
+int Peripherals::getNumUsedPins(){
+    return usedPins.size();
 }
 
 void Peripherals::insertPin(int pin){
@@ -59,10 +71,6 @@ void Peripherals::unmap_peripheral(){
     close(this->bcm2837_peripheral.mem_fd);
 }
 
-void cleanup(){
-    int* pins = usedPins.data();
-    int size = usedPins.size();
-    for(int i=0;i<size;i++)
-        pinMode(pins[i],INPUT);
+void Peripherals::cleanup(){
     unmap_peripheral();
 }
