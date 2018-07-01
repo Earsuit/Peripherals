@@ -12,7 +12,7 @@ int main(int argc,char* argv[]){
     gpio.setHigh(4);
     sleep(1);
     gpio.setLow(4);
-    
+
     gpio.cleanup();
     
     return 0;

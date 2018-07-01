@@ -64,8 +64,7 @@
 #define ALT4 3
 #define ALT5 2
 
-
-class GPIO: public Peripherals{
+class GPIO: protected Peripherals{
     private:
     uint32_t* addr;
 

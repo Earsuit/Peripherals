@@ -8,8 +8,6 @@
 #include <fcntl.h>
 #include <algorithm>    //std::find
 #include "Peripherals.h"
-
-std::vector<int> Peripherals::usedPins;
   
 // Exposes the physical address defined in the passed structure using mmap on /dev/mem
 int Peripherals::map_peripheral()
@@ -71,6 +69,7 @@ void Peripherals::unmap_peripheral(){
     close(this->bcm2837_peripheral.mem_fd);
 }
 
+//have to be invoked as the last command in the overrided cleanup() function
 void Peripherals::cleanup(){
     unmap_peripheral();
 }

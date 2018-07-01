@@ -8,7 +8,7 @@
  
 class Peripherals{
     private:
-    static std::vector<int> usedPins;
+    std::vector<int> usedPins;
     struct{
         uint32_t addr_p;
         int mem_fd;
