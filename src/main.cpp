@@ -66,7 +66,9 @@ int main(int argc,char* argv[]){
     // readGyro();
     // cout<<accelX<<endl;
 
-    LOG_S(INFO) << "Look at my custom object: " << a.cross(b);
+    loguru::init(argc, argv);
+	LOG_SCOPE_FUNCTION(INFO);
+	LOG_F(INFO, "Doing some stuff...");
     return 0;
 }
 
