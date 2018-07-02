@@ -1,7 +1,6 @@
 #include "easylogging++.h"
 #include <unistd.h>
 #include <iostream>
-#include "spdlog/spdlog.h"
 
 //MPU9250
 #define MPU9250_AD (uint8_t)0x69
