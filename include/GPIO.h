@@ -4,6 +4,7 @@
 #include "Peripherals.h"
 #include <stdint.h>
 
+
 // #define GPIO_IN(PIN) *(gpio.addr+(PIN/10)) &= ~(7<<((PIN%10)*3))
 // #define GPIO_OUT(PIN) *(gpio.addr+(PIN/10)) = (GPIO_IN(PIN)) | (1<<((PIN%10)*3))
 // #define GPIO_SET(PIN) *(gpio.addr+((PIN<=31)?7:8)) = (1<<(PIN%31))    // writing a “0” to the field has no effect

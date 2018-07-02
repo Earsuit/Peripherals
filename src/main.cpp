@@ -1,6 +1,7 @@
 #include "BSC.h"
 #include <unistd.h>
 #include <iostream>
+#include "spdlog/spdlog.h"
 
 //MPU9250
 #define MPU9250_AD (uint8_t)0x69
@@ -58,7 +59,8 @@ using std::endl;
 
 int main(int argc,char* argv[]){
     i2c.I2Csetup(100);
-    
+    auto console = spd::stdout_color_mt("console");
+    console->info("Welcome to spdlog!");
     MPU9250Setup();
     cout<<"here"<<endl;
     sleep(10);
