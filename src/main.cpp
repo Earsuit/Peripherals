@@ -1,5 +1,4 @@
-#include "easylogging++.h"
-INITIALIZE_EASYLOGGINGPP
+#include "spdlog/spdlog.h"
 #include <unistd.h>
 #include <iostream>
 
@@ -60,7 +59,8 @@ INITIALIZE_EASYLOGGINGPP
 
 int main(int argc,char* argv[]){
     // i2c.I2Csetup(100);
-    LOG(INFO) << "My first info log using default logger";
+    auto console = spd::stdout_color_mt("console");
+    console->info("Welcome to spdlog!");
     // MPU9250Setup();
     // cout<<"here"<<endl;
     // sleep(10);
