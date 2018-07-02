@@ -1,3 +1,0 @@
-/home/earsuit/code/Peripherals/build/CMakeFiles/edit_cache.dir
-/home/earsuit/code/Peripherals/build/CMakeFiles/rebuild_cache.dir
-/home/earsuit/code/Peripherals/build/CMakeFiles/gpioTest.dir
