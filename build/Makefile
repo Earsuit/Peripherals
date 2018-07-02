@@ -123,6 +123,33 @@ gpioTest/fast:
 	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/build
 .PHONY : gpioTest/fast
 
+src/BSC.o: src/BSC.cpp.o
+
+.PHONY : src/BSC.o
+
+# target to build an object file
+src/BSC.cpp.o:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/BSC.cpp.o
+.PHONY : src/BSC.cpp.o
+
+src/BSC.i: src/BSC.cpp.i
+
+.PHONY : src/BSC.i
+
+# target to preprocess a source file
+src/BSC.cpp.i:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/BSC.cpp.i
+.PHONY : src/BSC.cpp.i
+
+src/BSC.s: src/BSC.cpp.s
+
+.PHONY : src/BSC.s
+
+# target to generate assembly for a file
+src/BSC.cpp.s:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/BSC.cpp.s
+.PHONY : src/BSC.cpp.s
+
 src/GPIO.o: src/GPIO.cpp.o
 
 .PHONY : src/GPIO.o
@@ -177,6 +204,33 @@ src/Peripherals.cpp.s:
 	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/Peripherals.cpp.s
 .PHONY : src/Peripherals.cpp.s
 
+src/log4z.o: src/log4z.cpp.o
+
+.PHONY : src/log4z.o
+
+# target to build an object file
+src/log4z.cpp.o:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/log4z.cpp.o
+.PHONY : src/log4z.cpp.o
+
+src/log4z.i: src/log4z.cpp.i
+
+.PHONY : src/log4z.i
+
+# target to preprocess a source file
+src/log4z.cpp.i:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/log4z.cpp.i
+.PHONY : src/log4z.cpp.i
+
+src/log4z.s: src/log4z.cpp.s
+
+.PHONY : src/log4z.s
+
+# target to generate assembly for a file
+src/log4z.cpp.s:
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/log4z.cpp.s
+.PHONY : src/log4z.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -213,12 +267,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... gpioTest"
+	@echo "... src/BSC.o"
+	@echo "... src/BSC.i"
+	@echo "... src/BSC.s"
 	@echo "... src/GPIO.o"
 	@echo "... src/GPIO.i"
 	@echo "... src/GPIO.s"
 	@echo "... src/Peripherals.o"
 	@echo "... src/Peripherals.i"
 	@echo "... src/Peripherals.s"
+	@echo "... src/log4z.o"
+	@echo "... src/log4z.i"
+	@echo "... src/log4z.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

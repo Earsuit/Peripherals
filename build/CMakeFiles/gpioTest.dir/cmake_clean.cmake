@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o"
+  "CMakeFiles/gpioTest.dir/src/BSC.cpp.o"
   "CMakeFiles/gpioTest.dir/src/GPIO.cpp.o"
+  "CMakeFiles/gpioTest.dir/src/log4z.cpp.o"
   "CMakeFiles/gpioTest.dir/src/main.cpp.o"
   "gpioTest.pdb"
   "gpioTest"

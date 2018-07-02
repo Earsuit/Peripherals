@@ -10,20 +10,16 @@
 #define GPIO_I2C1_SLC_PIN 3
 
 #define RX_BUFFER_SIZE 32
-#define WRITE 0x00
-#define READ 0x01
-#define RESPOND_GC 0x01
-#define NOT_RESPOND_GC 0x00
 
 //the following are the registers 
-#define CONTROL *_addr;
-#define STATUS *(_addr+1);
-#define DLEN *(_addr+2);
-#define ADDR *(_addr+3);
-#define FIFO *(_addr+4);
-#define DIV *(_addr+5);
-#define DEL *(_addr+6);
-#define CLTK *(_addr+7);
+#define CONTROL *_addr
+#define STATUS *(_addr+1)
+#define DLEN *(_addr+2)
+#define ADDR *(_addr+3)
+#define FIFO *(_addr+4)
+#define DIV *(_addr+5)
+#define DEL *(_addr+6)
+#define CLTK *(_addr+7)
 
 //Control register command
 #define I2C_ENABLE 0x8000
@@ -51,8 +47,8 @@ class BSC: protected Peripherals{
     public:
     BSC():Peripherals(BSC1_ADDR_BASE){_addr = getAddr();}
     void I2Csetup(int freq=100);  //unit khz
-    void write(uint8_t data, bool stop=false);
-    void request(uint8_t addr, int num,bool stop, bool repeatStart=true);
+    void write(uint8_t addr, int numOfBytes, uint8_t* data);
+    void request(uint8_t addr, uint8_t requestRegister, int numOfBytes);
     void waitForComplete();
     uint8_t readBuffer();
     uint8_t* getBuffer();

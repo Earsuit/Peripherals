@@ -8,13 +8,13 @@
  
 class Peripherals{
     private:
-    std::vector<int> usedPins;
+    std::vector<int> _usedPins;
     struct{
         uint32_t addr_p;
         int mem_fd;
         void *map;
         volatile uint32_t *addr;
-    }bcm2837_peripheral;
+    }_bcm2837_peripheral;
 	int map_peripheral();
 
     protected:

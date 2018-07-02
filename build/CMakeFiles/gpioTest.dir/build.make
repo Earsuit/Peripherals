@@ -81,9 +81,33 @@ CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o.provides: CMakeFiles/gpioTest.dir/
 CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o.provides.build: CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o
 
 
+CMakeFiles/gpioTest.dir/src/BSC.cpp.o: CMakeFiles/gpioTest.dir/flags.make
+CMakeFiles/gpioTest.dir/src/BSC.cpp.o: ../src/BSC.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gpioTest.dir/src/BSC.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gpioTest.dir/src/BSC.cpp.o -c /home/earsuit/code/Peripherals/src/BSC.cpp
+
+CMakeFiles/gpioTest.dir/src/BSC.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gpioTest.dir/src/BSC.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/earsuit/code/Peripherals/src/BSC.cpp > CMakeFiles/gpioTest.dir/src/BSC.cpp.i
+
+CMakeFiles/gpioTest.dir/src/BSC.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gpioTest.dir/src/BSC.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/earsuit/code/Peripherals/src/BSC.cpp -o CMakeFiles/gpioTest.dir/src/BSC.cpp.s
+
+CMakeFiles/gpioTest.dir/src/BSC.cpp.o.requires:
+
+.PHONY : CMakeFiles/gpioTest.dir/src/BSC.cpp.o.requires
+
+CMakeFiles/gpioTest.dir/src/BSC.cpp.o.provides: CMakeFiles/gpioTest.dir/src/BSC.cpp.o.requires
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/BSC.cpp.o.provides.build
+.PHONY : CMakeFiles/gpioTest.dir/src/BSC.cpp.o.provides
+
+CMakeFiles/gpioTest.dir/src/BSC.cpp.o.provides.build: CMakeFiles/gpioTest.dir/src/BSC.cpp.o
+
+
 CMakeFiles/gpioTest.dir/src/GPIO.cpp.o: CMakeFiles/gpioTest.dir/flags.make
 CMakeFiles/gpioTest.dir/src/GPIO.cpp.o: ../src/GPIO.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gpioTest.dir/src/GPIO.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gpioTest.dir/src/GPIO.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gpioTest.dir/src/GPIO.cpp.o -c /home/earsuit/code/Peripherals/src/GPIO.cpp
 
 CMakeFiles/gpioTest.dir/src/GPIO.cpp.i: cmake_force
@@ -105,9 +129,33 @@ CMakeFiles/gpioTest.dir/src/GPIO.cpp.o.provides: CMakeFiles/gpioTest.dir/src/GPI
 CMakeFiles/gpioTest.dir/src/GPIO.cpp.o.provides.build: CMakeFiles/gpioTest.dir/src/GPIO.cpp.o
 
 
+CMakeFiles/gpioTest.dir/src/log4z.cpp.o: CMakeFiles/gpioTest.dir/flags.make
+CMakeFiles/gpioTest.dir/src/log4z.cpp.o: ../src/log4z.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gpioTest.dir/src/log4z.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gpioTest.dir/src/log4z.cpp.o -c /home/earsuit/code/Peripherals/src/log4z.cpp
+
+CMakeFiles/gpioTest.dir/src/log4z.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gpioTest.dir/src/log4z.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/earsuit/code/Peripherals/src/log4z.cpp > CMakeFiles/gpioTest.dir/src/log4z.cpp.i
+
+CMakeFiles/gpioTest.dir/src/log4z.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gpioTest.dir/src/log4z.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/earsuit/code/Peripherals/src/log4z.cpp -o CMakeFiles/gpioTest.dir/src/log4z.cpp.s
+
+CMakeFiles/gpioTest.dir/src/log4z.cpp.o.requires:
+
+.PHONY : CMakeFiles/gpioTest.dir/src/log4z.cpp.o.requires
+
+CMakeFiles/gpioTest.dir/src/log4z.cpp.o.provides: CMakeFiles/gpioTest.dir/src/log4z.cpp.o.requires
+	$(MAKE) -f CMakeFiles/gpioTest.dir/build.make CMakeFiles/gpioTest.dir/src/log4z.cpp.o.provides.build
+.PHONY : CMakeFiles/gpioTest.dir/src/log4z.cpp.o.provides
+
+CMakeFiles/gpioTest.dir/src/log4z.cpp.o.provides.build: CMakeFiles/gpioTest.dir/src/log4z.cpp.o
+
+
 CMakeFiles/gpioTest.dir/src/main.cpp.o: CMakeFiles/gpioTest.dir/flags.make
 CMakeFiles/gpioTest.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gpioTest.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gpioTest.dir/src/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gpioTest.dir/src/main.cpp.o -c /home/earsuit/code/Peripherals/src/main.cpp
 
 CMakeFiles/gpioTest.dir/src/main.cpp.i: cmake_force
@@ -132,18 +180,22 @@ CMakeFiles/gpioTest.dir/src/main.cpp.o.provides.build: CMakeFiles/gpioTest.dir/s
 # Object files for target gpioTest
 gpioTest_OBJECTS = \
 "CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o" \
+"CMakeFiles/gpioTest.dir/src/BSC.cpp.o" \
 "CMakeFiles/gpioTest.dir/src/GPIO.cpp.o" \
+"CMakeFiles/gpioTest.dir/src/log4z.cpp.o" \
 "CMakeFiles/gpioTest.dir/src/main.cpp.o"
 
 # External object files for target gpioTest
 gpioTest_EXTERNAL_OBJECTS =
 
 gpioTest: CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o
+gpioTest: CMakeFiles/gpioTest.dir/src/BSC.cpp.o
 gpioTest: CMakeFiles/gpioTest.dir/src/GPIO.cpp.o
+gpioTest: CMakeFiles/gpioTest.dir/src/log4z.cpp.o
 gpioTest: CMakeFiles/gpioTest.dir/src/main.cpp.o
 gpioTest: CMakeFiles/gpioTest.dir/build.make
 gpioTest: CMakeFiles/gpioTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable gpioTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/earsuit/code/Peripherals/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable gpioTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gpioTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -152,7 +204,9 @@ CMakeFiles/gpioTest.dir/build: gpioTest
 .PHONY : CMakeFiles/gpioTest.dir/build
 
 CMakeFiles/gpioTest.dir/requires: CMakeFiles/gpioTest.dir/src/Peripherals.cpp.o.requires
+CMakeFiles/gpioTest.dir/requires: CMakeFiles/gpioTest.dir/src/BSC.cpp.o.requires
 CMakeFiles/gpioTest.dir/requires: CMakeFiles/gpioTest.dir/src/GPIO.cpp.o.requires
+CMakeFiles/gpioTest.dir/requires: CMakeFiles/gpioTest.dir/src/log4z.cpp.o.requires
 CMakeFiles/gpioTest.dir/requires: CMakeFiles/gpioTest.dir/src/main.cpp.o.requires
 
 .PHONY : CMakeFiles/gpioTest.dir/requires

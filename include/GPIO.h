@@ -44,13 +44,13 @@
 #define ASYC_RISING_EDG_DETECT 31
 #define ASYC_FALLING_EDGE_DETECT 34
 //Registers address
-#define GPIO_PIN_MODE(PIN) *(addr+(PIN/10))
-#define GPIO_HIGH(PIN) *(addr+((PIN<=31)?7:8))
-#define GPIO_LOW(PIN) *(addr+((PIN<=31)?10:11))
-#define GPIO_LEVEL(PIN) *(addr+((PIN<=31)?13:14))
-#define GPIO_EVENT(PIN) *(addr+((PIN<=31)?type:(type+1)))
-#define GPIO_PULL *(addr+37)
-#define GPIO_PULL_CLOCK(PIN) *(addr+((PIN<=31)?38:39))
+#define GPIO_PIN_MODE(PIN) *(_addr+(PIN/10))
+#define GPIO_HIGH(PIN) *(_addr+((PIN<=31)?7:8))
+#define GPIO_LOW(PIN) *(_addr+((PIN<=31)?10:11))
+#define GPIO_LEVEL(PIN) *(_addr+((PIN<=31)?13:14))
+#define GPIO_EVENT(PIN) *(_addr+((PIN<=31)?type:(type+1)))
+#define GPIO_PULL *(_addr+37)
+#define GPIO_PULL_CLOCK(PIN) *(_addr+((PIN<=31)?38:39))
 
 #define HIGH 1
 #define LOW 0
@@ -66,10 +66,10 @@
 
 class GPIO: protected Peripherals{
     private:
-    uint32_t* addr;
+    uint32_t* _addr;
 
     public:
-    GPIO(): Peripherals(GPIO_ADDR_BASE){addr = getAddr();}
+    GPIO(): Peripherals(GPIO_ADDR_BASE){_addr = getAddr();}
     void pinMode(int pin,int func);
     void setHigh(int pin);
     void setLow(int pin);

@@ -13,60 +13,60 @@
 int Peripherals::map_peripheral()
 {
    // Open /dev/mem
-   this->bcm2837_peripheral.mem_fd = open("/dev/mem", O_RDWR|O_SYNC);
-   if (this->bcm2837_peripheral.mem_fd < 0) {
+   this->_bcm2837_peripheral.mem_fd = open("/dev/mem", O_RDWR|O_SYNC);
+   if (this->_bcm2837_peripheral.mem_fd < 0) {
       printf("Failed to open /dev/mem, try checking permissions.\n");
       return -1;
    }
 
    size_t pagesize = (size_t) sysconf (_SC_PAGESIZE);
  
-   this->bcm2837_peripheral.map = mmap(
+   this->_bcm2837_peripheral.map = mmap(
       NULL,
       pagesize,
       PROT_READ|PROT_WRITE,
       MAP_SHARED,
-      this->bcm2837_peripheral.mem_fd,      // File descriptor to physical memory virtual file '/dev/mem'
-      this->bcm2837_peripheral.addr_p       // Address in physical map that we want this memory block to expose
+      this->_bcm2837_peripheral.mem_fd,      // File descriptor to physical memory virtual file '/dev/mem'
+      this->_bcm2837_peripheral.addr_p       // Address in physical map that we want this memory block to expose
    );
  
-   if (this->bcm2837_peripheral.map == MAP_FAILED) {
+   if (this->_bcm2837_peripheral.map == MAP_FAILED) {
         perror("mmap");
         return -1;
    }
  
-   this->bcm2837_peripheral.addr = (volatile uint32_t*)this->bcm2837_peripheral.map;
+   this->_bcm2837_peripheral.addr = (volatile uint32_t*)this->_bcm2837_peripheral.map;
  
    return 0;
 }
 
 Peripherals::Peripherals(uint32_t address_base){
-    this->bcm2837_peripheral.addr_p = address_base;
+    this->_bcm2837_peripheral.addr_p = address_base;
     map_peripheral();
 }
 
 uint32_t* Peripherals::getAddr(){
-    return (uint32_t*)this->bcm2837_peripheral.addr;
+    return (uint32_t*)this->_bcm2837_peripheral.addr;
 }
 
 int* Peripherals::getUsedPins(){
-    return usedPins.data();
+    return _usedPins.data();
 }
 
 int Peripherals::getNumUsedPins(){
-    return usedPins.size();
+    return _usedPins.size();
 }
 
 void Peripherals::insertPin(int pin){
-    if(std::find(usedPins.begin(),usedPins.end(),pin) == usedPins.end()){
+    if(std::find(_usedPins.begin(),_usedPins.end(),pin) == _usedPins.end()){
         //pin not found
-        usedPins.push_back(pin);
+        _usedPins.push_back(pin);
     }
 }
  
 void Peripherals::unmap_peripheral(){
-    munmap(this->bcm2837_peripheral.map,  (size_t) sysconf (_SC_PAGESIZE));
-    close(this->bcm2837_peripheral.mem_fd);
+    munmap(this->_bcm2837_peripheral.map,  (size_t) sysconf (_SC_PAGESIZE));
+    close(this->_bcm2837_peripheral.mem_fd);
 }
 
 //have to be invoked as the last command in the overrided cleanup() function
