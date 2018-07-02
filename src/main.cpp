@@ -56,7 +56,7 @@
 // using std::cout;
 // using std::endl;
 
-
+namespace spd = spdlog;
 int main(int argc,char* argv[]){
     // i2c.I2Csetup(100);
     auto console = spd::stdout_color_mt("console");
