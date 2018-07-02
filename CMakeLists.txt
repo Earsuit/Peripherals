@@ -23,15 +23,9 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-gnu-zero-variadic-macro-arguments")
 endif() # Clang
 
-include_directories(include)
 file(GLOB SOURCES "src/*.cpp")
 
 add_executable(gpioTest ${SOURCES})
 
-find_package(Threads)
-target_link_libraries(loguru_example ${CMAKE_THREAD_LIBS_INIT}) # For pthreads
-if(NOT WIN32)
-    target_link_libraries(loguru_example dl) # For ldl
-endif()
 
 
