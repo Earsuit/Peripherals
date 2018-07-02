@@ -1,4 +1,4 @@
-#include "BSC.h"
+#include "easylogging++.h"
 #include <unistd.h>
 #include <iostream>
 #include "spdlog/spdlog.h"
@@ -56,11 +56,11 @@ volatile float accelX,accelY,accelZ,gyroX,gyroY,gyroZ,magneX,magneY,magneZ,asax,
 BSC i2c;
 using std::cout;
 using std::endl;
+INITIALIZE_EASYLOGGINGPP
 
 int main(int argc,char* argv[]){
     i2c.I2Csetup(100);
-    auto console = spd::stdout_color_mt("console");
-    console->info("Welcome to spdlog!");
+    LOG(INFO) << "My first info log using default logger";
     MPU9250Setup();
     cout<<"here"<<endl;
     sleep(10);
