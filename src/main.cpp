@@ -67,8 +67,7 @@ int main(int argc,char* argv[]){
     // cout<<accelX<<endl;
 
     loguru::init(argc, argv);
-	LOG_SCOPE_FUNCTION(INFO);
-	LOG_F(INFO, "Doing some stuff...");
+    LOG_F(INFO, "Hello from main.cpp!");
     return 0;
 }
 
