@@ -1,6 +1,8 @@
 #include "BSC.h"
 #include <stdint.h>
 #include <unistd.h>
+#define LOGURU_IMPLEMENTATION 1
+#include "loguru.hpp"
 
 void BSC::I2Csetup(int freq){
     //set the cooresponding GPIO pins to the I2C mode

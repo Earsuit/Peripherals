@@ -1,3 +1,4 @@
+#define LOGURU_IMPLEMENTATION 1
 #include "loguru.hpp"
 #include <unistd.h>
 #include <iostream>
@@ -48,7 +49,7 @@
 #define DATA_READY 0x01
 #define MAGIC_OVERFLOW 0x8
 
-#define LOGURU_IMPLEMENTATION 1
+
 
 // void MPU9250Setup();
 // void readGyro();
@@ -66,7 +67,7 @@ int main(int argc,char* argv[]){
     // readGyro();
     // cout<<accelX<<endl;
 
-    loguru::init(argc, argv);
+    // loguru::init(argc, argv);
     LOG_F(INFO, "Hello from main.cpp!");
     return 0;
 }
