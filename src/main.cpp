@@ -1,4 +1,5 @@
 #include "easylogging++.h"
+INITIALIZE_EASYLOGGINGPP
 #include <unistd.h>
 #include <iostream>
 
@@ -55,7 +56,7 @@
 // BSC i2c;
 // using std::cout;
 // using std::endl;
-INITIALIZE_EASYLOGGINGPP
+
 
 int main(int argc,char* argv[]){
     // i2c.I2Csetup(100);
