@@ -27,3 +27,11 @@ include_directories(include)
 file(GLOB SOURCES "src/*.cpp")
 
 add_executable(gpioTest ${SOURCES})
+
+find_package(Threads)
+target_link_libraries(loguru_example ${CMAKE_THREAD_LIBS_INIT}) # For pthreads
+if(NOT WIN32)
+    target_link_libraries(loguru_example dl) # For ldl
+endif()
+
+
