@@ -10,7 +10,6 @@
 *.sig
 
 pkg/
-src/
 
 #CMake
 CMakeCache.txt
