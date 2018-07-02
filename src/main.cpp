@@ -59,7 +59,7 @@
 namespace spd = spdlog;
 int main(int argc,char* argv[]){
     // i2c.I2Csetup(100);
-    auto console = spd::stdout_color_mt("console");
+    // auto console = spd::stdout_color_mt("console");
     console->info("Welcome to spdlog!");
     // MPU9250Setup();
     // cout<<"here"<<endl;
