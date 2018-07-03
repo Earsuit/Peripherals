@@ -1,7 +1,6 @@
-#define LOGURU_IMPLEMENTATION 1
-#include "loguru.hpp"
 #include <unistd.h>
 #include <iostream>
+#include "BSC.h"
 
 //MPU9250
 #define MPU9250_AD (uint8_t)0x69
@@ -49,55 +48,51 @@
 #define DATA_READY 0x01
 #define MAGIC_OVERFLOW 0x8
 
-// void MPU9250Setup();
-// void readGyro();
+void MPU9250Setup();
+void readGyro();
 
-// volatile float accelX,accelY,accelZ,gyroX,gyroY,gyroZ,magneX,magneY,magneZ,asax,asay,asaz;
-// BSC i2c;
-// using std::cout;
-// using std::endl;
+volatile float accelX,accelY,accelZ,gyroX,gyroY,gyroZ,magneX,magneY,magneZ,asax,asay,asaz;
+BSC i2c;
+using std::cout;
+using std::endl;
 
 int main(int argc,char* argv[]){
-    // i2c.I2Csetup(100);
-    // MPU9250Setup();
-    // cout<<"here"<<endl;
-    // sleep(10);
-    // readGyro();
-    // cout<<accelX<<endl;
-
-    // loguru::init(argc, argv);
-    LOG_F(INFO, "Hello from main.cpp!");
+    i2c.I2Csetup(100);
+    MPU9250Setup();
+    sleep(10);
+    readGyro();
+    cout<<accelX<<endl;
     return 0;
 }
 
-// void MPU9250Setup(){
-//     {uint8_t data[2] = {PWR_MGMT_1_AD,0x01};
-//     i2c.write(MPU9250_AD,2,data);}
+void MPU9250Setup(){
+    {uint8_t data[2] = {PWR_MGMT_1_AD,0x01};
+    i2c.write(MPU9250_AD,2,data);}
 
-//     {uint8_t data[2] = {ACCEL_CONFIG_1_AD,0x08};
-//     i2c.write(MPU9250_AD,2,data);}
+    {uint8_t data[2] = {ACCEL_CONFIG_1_AD,0x08};
+    i2c.write(MPU9250_AD,2,data);}
 
-//     {uint8_t data[2] = {ACCEL_CONFIG_2_AD,0x05};
-//     i2c.write(MPU9250_AD,2,data);}
+    {uint8_t data[2] = {ACCEL_CONFIG_2_AD,0x05};
+    i2c.write(MPU9250_AD,2,data);}
 
-//     {uint8_t data[2] = {GYRO_CONFIG_AD,0x08};
-//     i2c.write(MPU9250_AD,2,data);}
+    {uint8_t data[2] = {GYRO_CONFIG_AD,0x08};
+    i2c.write(MPU9250_AD,2,data);}
 
-//     {uint8_t data[2] = {CONFIG_AD,0x05};
-//     i2c.write(MPU9250_AD,2,data);}
-// }
+    {uint8_t data[2] = {CONFIG_AD,0x05};
+    i2c.write(MPU9250_AD,2,data);}
+}
 
-// void readGyro(){
-//     //read the accelerate
-//     i2c.request(MPU9250_AD,ACCEL_XOUT_H_AD,6);
+void readGyro(){
+    //read the accelerate
+    i2c.request(MPU9250_AD,ACCEL_XOUT_H_AD,6);
 
-//     accelX = (i2c.readBuffer()<<8) | i2c.readBuffer();
-//     accelY = (i2c.readBuffer()<<8) | i2c.readBuffer();
-//     accelZ = (i2c.readBuffer()<<8) | i2c.readBuffer();
+    accelX = (i2c.readBuffer()<<8) | i2c.readBuffer();
+    accelY = (i2c.readBuffer()<<8) | i2c.readBuffer();
+    accelZ = (i2c.readBuffer()<<8) | i2c.readBuffer();
 
-//     //read the gyro
-//     i2c.request(MPU9250_AD,GYRO_XOUT_H_AD,6);
-//     gyroX = (i2c.readBuffer()<<8) | i2c.readBuffer();
-//     gyroY = (i2c.readBuffer()<<8) | i2c.readBuffer();
-//     gyroZ = (i2c.readBuffer()<<8) | i2c.readBuffer();
-// }
+    //read the gyro
+    i2c.request(MPU9250_AD,GYRO_XOUT_H_AD,6);
+    gyroX = (i2c.readBuffer()<<8) | i2c.readBuffer();
+    gyroY = (i2c.readBuffer()<<8) | i2c.readBuffer();
+    gyroZ = (i2c.readBuffer()<<8) | i2c.readBuffer();
+}
