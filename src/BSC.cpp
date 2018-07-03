@@ -1,8 +1,7 @@
 #include "BSC.h"
 #include <stdint.h>
 #include <unistd.h>
-#define LOGURU_IMPLEMENTATION 1
-#include "loguru.hpp"
+#include <glog/logging.h>
 
 void BSC::I2Csetup(int freq){
     //set the cooresponding GPIO pins to the I2C mode
@@ -19,7 +18,13 @@ void BSC::I2Csetup(int freq){
     CONTROL = I2C_ENABLE;
 
     _timeout = 5;
-    LOG_F(DEBUG, "Starting Debugging!");
+}
+
+void BSC::loggingSetup(const char* argv0){
+    //log to stderr
+    FLAGS_alsologtostderr = 1;
+    google::InitGoogleLogging(argv0);
+    LOG(INFO)<<"Debugging begin!";
 }
 
 void BSC::write(uint8_t addr, int numOfBytes, uint8_t* data){

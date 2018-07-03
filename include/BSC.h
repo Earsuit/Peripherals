@@ -4,6 +4,7 @@
 #include "Peripherals.h"
 #include <stdint.h>
 #include "GPIO.h"
+#include <glog/logging.h>
 
 #define BSC1_ADDR_BASE (BCM2837_PERI_BASE + 0x804000) 
 #define GPIO_I2C1_SDA_PIN 2 
@@ -46,6 +47,7 @@ class BSC: protected Peripherals{
 
     public:
     BSC():Peripherals(BSC1_ADDR_BASE){_addr = getAddr();}
+    void loggingSetup(const char* argv0);
     void I2Csetup(int freq=100);  //unit khz
     void write(uint8_t addr, int numOfBytes, uint8_t* data);
     void request(uint8_t addr, uint8_t requestRegister, int numOfBytes);

@@ -57,6 +57,7 @@ using std::cout;
 using std::endl;
 
 int main(int argc,char* argv[]){
+    i2c.loggingSetup(argv[0]);
     i2c.I2Csetup(100);
     MPU9250Setup();
     sleep(10);
