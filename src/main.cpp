@@ -49,8 +49,6 @@
 #define DATA_READY 0x01
 #define MAGIC_OVERFLOW 0x8
 
-
-
 // void MPU9250Setup();
 // void readGyro();
 
