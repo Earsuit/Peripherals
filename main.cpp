@@ -1,9 +1,9 @@
-#include <unistd.h>
+#include <time.h>
 #include <iostream>
 #include "BSC.h"
 
 //MPU9250
-#define MPU9250_AD (uint8_t)0x69
+#define MPU9250_AD (uint8_t)0x68
 #define FIFO_EN_AD (uint8_t)0x23
 #define PWR_MGMT_1_AD (uint8_t)0x6B
 #define ACCEL_XOUT_H_AD (uint8_t)0x3B
@@ -22,47 +22,31 @@
 #define ACCEL_SENS 8192.0f
 #define GYRO_SENS 131.0f
 
-//Magnetometer
-#define MAG_AD 0xC
-#define WIA_AD 0x00
-#define INFO 0x01
-#define STATUS_1_AD 0x02
-#define HXL_AD 0x03    //X-axis measurement data lower 8bit
-#define HXH_AD 0x04    //X-axis measurement data higher 8bit
-#define HYL_AD 0x05    //Y-axis measurement data lower 8bit
-#define HYH_AD 0x06    //Y-axis measurement data higher 8bit
-#define HZL_AD 0x07    //Z-axis measurement data lower 8bit
-#define HZH_AD 0x08    //Z-axis measurement data higher 8bit
-#define STATUS_2_AD 0x09
-#define CNTL1_AD 0x0A   //control 1
-#define CNTL2_AD 0x0B   //control 2
-#define ASTC_AD 0x0C    //Self-Test Control
-#define TS1_AD 0x0D    //test 1
-#define TS2_AD 0x0E   //test 2
-#define I2CDIS_AD 0x0F    //I2C disable
-#define ASAX_AD 0x10    //Magnetic sensor X-axis sensitivity adjustment value
-#define ASAY_AD 0x11    //Magnetic sensor Y-axis sensitivity adjustment value
-#define ASAZ_AD 0x12    //Magnetic sensor Z-axis sensitivity adjustment value
-#define MAGNE_SENS 6.67f
-#define SCALE 0.1499f  // 4912/32760 uT/tick
-#define DATA_READY 0x01
-#define MAGIC_OVERFLOW 0x8
-
 void MPU9250Setup();
 void readGyro();
 
-volatile float accelX,accelY,accelZ,gyroX,gyroY,gyroZ,magneX,magneY,magneZ,asax,asay,asaz;
+volatile int16_t accelX,accelY,accelZ,gyroX,gyroY,gyroZ,magneX,magneY,magneZ,asax,asay,asaz;
 BSC i2c;
 using std::cout;
 using std::endl;
 
 int main(int argc,char* argv[]){
-    i2c.loggingSetup(argv[0]);
-    i2c.I2Csetup(100);
+    i2c.I2Csetup(argv[0],400);
     MPU9250Setup();
-    sleep(10);
-    readGyro();
-    cout<<accelX<<endl;
+    int milisec = 100; // length of time to sleep, in miliseconds
+    struct timespec req = {0};
+    req.tv_sec = 0;
+    req.tv_nsec = milisec * 1000000L;
+    while(1){
+        readGyro();
+        cout<<"Acc_x: "<<accelX/ACCEL_SENS;
+        cout<<" Acc_y: "<<accelY/ACCEL_SENS;
+        cout<<" Acc_z: "<<accelZ/ACCEL_SENS<<endl;
+        cout<<"Gyro_x: "<<gyroX/GYRO_SENS;
+        cout<<" Gyro_y: "<<gyroY/GYRO_SENS;
+        cout<<" Gyro_z: "<<gyroZ/GYRO_SENS<<endl;
+        nanosleep(&req,(struct timespec *)NULL);
+    } 
     return 0;
 }
 
@@ -86,7 +70,6 @@ void MPU9250Setup(){
 void readGyro(){
     //read the accelerate
     i2c.request(MPU9250_AD,ACCEL_XOUT_H_AD,6);
-
     accelX = (i2c.readBuffer()<<8) | i2c.readBuffer();
     accelY = (i2c.readBuffer()<<8) | i2c.readBuffer();
     accelZ = (i2c.readBuffer()<<8) | i2c.readBuffer();

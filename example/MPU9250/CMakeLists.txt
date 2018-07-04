@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(gpioTest)
 
-include_directories(include)
-file(GLOB SOURCES "src/*.cpp" "main.cpp")
+include_directories(../../include)
+file(GLOB SOURCES "../../src/*.cpp" "main.cpp")
 
 add_executable(gpioTest ${SOURCES})
 

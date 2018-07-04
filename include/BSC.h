@@ -24,37 +24,50 @@
 
 //Control register command
 #define I2C_ENABLE 0x8000
-#define INT_ON_RX 0x400
-#define INT_ON_TX 0x200
-#define INT_ON_DONE 0x100
+#define INTR 0x400
+#define INTT 0x200
+#define INTD 0x100
 #define START_TRANS 0x80
-#define CLEAR_FIFO 0x30
-#define READ 1
+#define CLEAR_FIFO 0x20
+#define READ 0x1
 #define WRITE 0
 
-//Status register command
-#define CLR_STATUS 0x302
-#define DONE 1
+//STATUS register command
+#define CLKT 0x200
+#define ERR 0x100
+#define RXF 0x80
+#define TXE 0x40
+#define RXD 0x20
+#define TXD 0x10
+#define RXR 0x8
+#define TXW 0x4
+#define DONE 0x2
+#define TA 1
+#define CLR_STATUS (CLKT | ERR | DONE)
+
+#define CORE_CLK 150000  //kHz
+#define TIMEOUT 5000  //timeout, 5000 microsecond
 
 class BSC: protected Peripherals{
     private:
     uint32_t* _addr;
-    uint8_t _rxBuffer[RX_BUFFER_SIZE];
+    volatile uint8_t _rxBuffer[RX_BUFFER_SIZE];
     uint8_t _rxBufferIndex;
     uint8_t _rxBufferLength;
     GPIO _gpio;
     int _timeout;
+    void suspend();
 
     public:
     BSC():Peripherals(BSC1_ADDR_BASE){_addr = getAddr();}
-    void loggingSetup(const char* argv0);
-    void I2Csetup(int freq=100);  //unit khz
-    void write(uint8_t addr, int numOfBytes, uint8_t* data);
-    void request(uint8_t addr, uint8_t requestRegister, int numOfBytes);
+    void I2Csetup(const char* argv0,int freq=100);  //unit khz
+    void write(uint8_t addr, uint16_t numOfBytes, uint8_t* data);
+    void request(uint8_t addr, uint8_t requestRegister, uint16_t numOfBytes);
     void waitForComplete();
     uint8_t readBuffer();
-    uint8_t* getBuffer();
     void cleanup();
+    void error();
+    
 };
 
 #endif
