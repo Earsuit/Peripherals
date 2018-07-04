@@ -9,4 +9,4 @@ cd build
 cmake ..
 make
 
-sudo ./gpioTest
+sudo ./mpu9250
