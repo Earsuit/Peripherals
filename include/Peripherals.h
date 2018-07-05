@@ -19,13 +19,13 @@ class Peripherals{
 
     protected:
     Peripherals(uint32_t address_base);
+    ~Peripherals();
     uint32_t* getAddr();
 	//add used pin to the usedPin array
     int* getUsedPins();
     int getNumUsedPins();
 	void insertPin(int pin);
     void unmap_peripheral();
-	void cleanup();
 };
 
 #endif

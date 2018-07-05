@@ -59,7 +59,6 @@ class BSC: protected Peripherals{
     void request(uint8_t addr, uint8_t requestRegister, uint16_t numOfBytes);
     void waitForComplete();
     uint8_t readBuffer();
-    void cleanup();
     void error(); 
 };
 

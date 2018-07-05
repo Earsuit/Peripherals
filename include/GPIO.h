@@ -52,6 +52,7 @@ class GPIO: protected Peripherals{
 
     public:
     GPIO(): Peripherals(GPIO_ADDR_BASE){_addr = getAddr();}
+    ~GPIO();
     void pinMode(int pin,int func);
     void setHigh(int pin);
     void setLow(int pin);
@@ -59,8 +60,6 @@ class GPIO: protected Peripherals{
     void eventDetectOn(int pin,int type);
     void eventDetectOff(int pin,int type);
     void pull_up_off_down(int pin, int type);
-    //GPIO Pull-up/down Clock Registers (GPPUDCLKn) 
-    void cleanup();
 };
 
 #endif

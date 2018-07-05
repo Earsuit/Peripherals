@@ -45,6 +45,10 @@ Peripherals::Peripherals(uint32_t address_base){
     map_peripheral();
 }
 
+Peripherals::~Peripherals(){
+    unmap_peripheral();
+}
+
 uint32_t* Peripherals::getAddr(){
     return (uint32_t*)this->_bcm2837_peripheral.addr;
 }
@@ -67,9 +71,4 @@ void Peripherals::insertPin(int pin){
 void Peripherals::unmap_peripheral(){
     munmap(this->_bcm2837_peripheral.map,  (size_t) sysconf (_SC_PAGESIZE));
     close(this->_bcm2837_peripheral.mem_fd);
-}
-
-//have to be invoked as the last command in the overrided cleanup() function
-void Peripherals::cleanup(){
-    unmap_peripheral();
 }

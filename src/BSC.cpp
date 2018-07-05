@@ -66,13 +66,6 @@ uint8_t BSC::readBuffer(){
     }
 }
 
-void BSC::cleanup(){
-    _gpio.pinMode(GPIO_I2C1_SDA_PIN,INPUT);
-    _gpio.pinMode(GPIO_I2C1_SLC_PIN,INPUT);
-    _gpio.cleanup();
-    Peripherals::cleanup();
-}
-
 void BSC::error(){
     if(STATUS & CLKT)
         LOG(ERROR)<<"CLKT Clock Stretch Timeout.";
