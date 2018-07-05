@@ -11,22 +11,22 @@
 
 #define DR *_addr
 #define RSRECR *(_addr+1)
-#define FR *(_addr+2)
-#define ILPR *(_addr+3)
-#define IBRD *(_addr+4)
-#define FBRD *(_addr+5)
-#define LCRH *(_addr+6)
-#define CR *(_addr+7)
-#define IFLS *(_addr+8)
-#define IMSC *(_addr+9)
-#define RIS *(_addr+10)
-#define MIS *(_addr+11)
-#define ICR *(_addr+12)
-#define DMACR *(_addr+13)
-#define ITCR *(_addr+14)
-#define ITIP *(_addr+15)
-#define ITOP *(_addr+16)
-#define TDR *(_addr+17)
+#define FR *(_addr+6)
+#define ILPR *(_addr+8)
+#define IBRD *(_addr+9)
+#define FBRD *(_addr+10)
+#define LCRH *(_addr+11)
+#define CR *(_addr+12)
+#define IFLS *(_addr+13)
+#define IMSC *(_addr+14)
+#define RIS *(_addr+15)
+#define MIS *(_addr+16)
+#define ICR *(_addr+17)
+#define DMACR *(_addr+18)
+#define ITCR *(_addr+32)
+#define ITIP *(_addr+33)
+#define ITOP *(_addr+34)
+#define TDR *(_addr+35)
 
 #define FUARTCLK 3000000  //Hz
 
@@ -37,7 +37,7 @@ class Serial : protected Peripherals{
     
     public:
     Serial():Peripherals(UART0_ADDR_BASE){_addr = getAddr();}
-    void begin(float baudRate=115200);
+    void begin(char* argv0,float baudRate=115200);
     void testFIFO();
 };
 

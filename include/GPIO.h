@@ -26,8 +26,8 @@
 #define GPIO_LOW(PIN) *(_addr+((PIN<=31)?10:11))
 #define GPIO_LEVEL(PIN) *(_addr+((PIN<=31)?13:14))
 #define GPIO_EVENT(PIN) *(_addr+((PIN<=31)?type:(type+1)))
-#define GPIO_PULL *(_addr+37)
-#define GPIO_PULL_CLOCK(PIN) *(_addr+((PIN<=31)?38:39))
+#define GPPUD *(_addr+37)
+#define GPPUDCLK(PIN) *(_addr+((PIN<=31)?38:39))
 
 #define HIGH 1
 #define LOW 0
@@ -40,6 +40,10 @@
 #define ALT3 7
 #define ALT4 3
 #define ALT5 2
+
+#define UP 2
+#define DOWN 1
+#define OFF 0
 
 class GPIO: protected Peripherals{
     private:
@@ -54,11 +58,8 @@ class GPIO: protected Peripherals{
     int pinLevel(int pin);
     void eventDetectOn(int pin,int type);
     void eventDetectOff(int pin,int type);
-    void pullUp();
-    void pullDown();
-    void pullUpDownOff();
+    void pull_up_off_down(int pin, int type);
     //GPIO Pull-up/down Clock Registers (GPPUDCLKn) 
-    void clock(int pin);
     void cleanup();
 };
 

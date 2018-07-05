@@ -31,20 +31,12 @@ void GPIO::eventDetectOff(int pin, int type){
     GPIO_EVENT(pin) &= ~(1<<(pin%31));
 }
 
-void GPIO::pullUp(){
-    GPIO_PULL = 0x02;
-}
-
-void GPIO::pullDown(){
-    GPIO_PULL = 0x01;
-}
-
-void GPIO::pullUpDownOff(){
-    GPIO_PULL = 0x00;
-}
-
-void GPIO::clock(int pin){
-    GPIO_PULL_CLOCK(pin) = (1<<(pin%31));
+void GPIO::pull_up_off_down(int pin,int type){
+    GPPUD = type;
+    for(int i=0;i<150;i++);
+    GPPUDCLK(pin) = (1<<(pin%31));
+    for(int i=0;i<150;i++);
+    GPPUDCLK(pin) = 0x00;
 }
 
 void GPIO::cleanup(){
