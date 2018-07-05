@@ -10,8 +10,6 @@
 #define GPIO_I2C1_SDA_PIN 2 
 #define GPIO_I2C1_SLC_PIN 3
 
-#define RX_BUFFER_SIZE 32
-
 //the following are the registers 
 #define CONTROL *_addr
 #define STATUS *(_addr+1)
@@ -51,12 +49,8 @@
 class BSC: protected Peripherals{
     private:
     uint32_t* _addr;
-    volatile uint8_t _rxBuffer[RX_BUFFER_SIZE];
-    uint8_t _rxBufferIndex;
-    uint8_t _rxBufferLength;
     GPIO _gpio;
     int _timeout;
-    void suspend();
 
     public:
     BSC():Peripherals(BSC1_ADDR_BASE){_addr = getAddr();}

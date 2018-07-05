@@ -16,10 +16,7 @@ void BSC::I2Csetup(const char* argv0, int freq){
     _gpio.pinMode(GPIO_I2C1_SLC_PIN,ALT0);
 
     // SCL = core clock / CDIV 
-    DIV = CORE_CLK/freq;
-
-    _rxBufferIndex = 0;
-    _rxBufferLength = 0; 
+    DIV = CORE_CLK/freq; 
 
     _timeout = TIMEOUT;
     LOG(INFO)<<"I2C setup done!";
@@ -41,8 +38,6 @@ void BSC::write(uint8_t addr, uint16_t numOfBytes, uint8_t* data){
 
 void BSC::request(uint8_t addr, uint8_t requestRegister, uint16_t numOfBytes){
     LOG(INFO)<<"Requesting!";
-    _rxBufferIndex = 0;
-    _rxBufferLength = numOfBytes;
     write(addr,1,&requestRegister);
     DLEN = numOfBytes;
     STATUS = CLR_STATUS;
