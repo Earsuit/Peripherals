@@ -60,8 +60,7 @@ class BSC: protected Peripherals{
     void waitForComplete();
     uint8_t readBuffer();
     void cleanup();
-    void error();
-    
+    void error(); 
 };
 
 #endif
