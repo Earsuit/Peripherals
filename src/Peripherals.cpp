@@ -17,7 +17,7 @@ int Peripherals::map_peripheral()
    if (this->_bcm2837_peripheral.mem_fd < 0) {
       printf("Failed to open /dev/mem, try checking permissions.\n");
       return -1;
-   }
+   } 
 
    size_t pagesize = (size_t) sysconf (_SC_PAGESIZE);
  

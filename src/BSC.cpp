@@ -44,7 +44,6 @@ void BSC::request(uint8_t addr, uint8_t requestRegister, uint16_t numOfBytes){
     _rxBufferIndex = 0;
     _rxBufferLength = numOfBytes;
     write(addr,1,&requestRegister);
-
     DLEN = numOfBytes;
     STATUS = CLR_STATUS;
     CONTROL = READ | START_TRANS | I2C_ENABLE | CLEAR_FIFO;

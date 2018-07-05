@@ -3,22 +3,22 @@
 #include "BSC.h"
 
 //MPU9250
-#define MPU9250_AD (uint8_t)0x68
-#define FIFO_EN_AD (uint8_t)0x23
-#define PWR_MGMT_1_AD (uint8_t)0x6B
-#define ACCEL_XOUT_H_AD (uint8_t)0x3B
-#define GYRO_XOUT_H_AD (uint8_t)0x43
-#define EXT_SENS_DATA_00_AD (uint8_t)0x49
-#define ACCEL_CONFIG_1_AD (uint8_t)0x1C
-#define ACCEL_CONFIG_2_AD (uint8_t)0x1D
-#define GYRO_CONFIG_AD (uint8_t)0x1B
-#define CONFIG_AD (uint8_t)0x1A
-#define I2C_MST_CTRL_AD (uint8_t)0x24
-#define I2C_SLV0_ADDR_AD (uint8_t)0x25
-#define I2C_SLV0_REG_AD (uint8_t)0x26
-#define I2C_SLV0_CTRL_AD (uint8_t)0x27
-#define INT_BYPASS_CONFIG_AD (uint8_t)0x37
-#define USER_CTRL_AD (uint8_t)0x6A
+#define MPU9250_AD 0x68
+#define FIFO_EN_AD 0x23
+#define PWR_MGMT_1_AD 0x6B
+#define ACCEL_XOUT_H_AD 0x3B
+#define GYRO_XOUT_H_AD 0x43
+#define EXT_SENS_DATA_00_AD 0x49
+#define ACCEL_CONFIG_1_AD 0x1C
+#define ACCEL_CONFIG_2_AD 0x1D
+#define GYRO_CONFIG_AD 0x1B
+#define CONFIG_AD 0x1A
+#define I2C_MST_CTRL_AD 0x24
+#define I2C_SLV0_ADDR_AD 0x25
+#define I2C_SLV0_REG_AD 0x26
+#define I2C_SLV0_CTRL_AD 0x27
+#define INT_BYPASS_CONFIG_AD 0x37
+#define USER_CTRL_AD 0x6A
 #define ACCEL_SENS 8192.0f
 #define GYRO_SENS 131.0f
 
@@ -51,18 +51,23 @@ int main(int argc,char* argv[]){
 }
 
 void MPU9250Setup(){
+    //set the clock reference to X axis gyroscope to get a better accuracy
     {uint8_t data[2] = {PWR_MGMT_1_AD,0x01};
     i2c.write(MPU9250_AD,2,data);}
 
+    //set the accel scale to 4g
     {uint8_t data[2] = {ACCEL_CONFIG_1_AD,0x08};
     i2c.write(MPU9250_AD,2,data);}
 
+    //turn on the internal low-pass filter for accel with 10.2Hz bandwidth
     {uint8_t data[2] = {ACCEL_CONFIG_2_AD,0x05};
     i2c.write(MPU9250_AD,2,data);}
 
+    //set the gyro scale to 2000 °/s and FCHOICE_B
     {uint8_t data[2] = {GYRO_CONFIG_AD,0x08};
     i2c.write(MPU9250_AD,2,data);}
 
+    // turn on the internal low-pass filter for gyro with 10Hz bandwidth
     {uint8_t data[2] = {CONFIG_AD,0x05};
     i2c.write(MPU9250_AD,2,data);}
 }
