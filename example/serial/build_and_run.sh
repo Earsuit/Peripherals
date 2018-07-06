@@ -7,5 +7,5 @@ mkdir -p build
 cd build
 cmake ..
 make
-/bin/bash
+
 sudo ./serial
