@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e # Fail on error
 
 ROOT_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 
@@ -8,5 +7,5 @@ mkdir -p build
 cd build
 cmake ..
 make
-
+/bin/bash
 sudo ./serial
