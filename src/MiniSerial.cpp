@@ -33,3 +33,15 @@ void MiniSerial::write(uint8_t data){
     //wait for complete
     while(!(AUX_MU_STAT_REG & TRANS_DONE));
 }
+
+bool MiniSerial::available(){
+    return AUX_MU_STAT_REG & DATA_READY;
+}
+
+void MiniSerial::flush(){
+    AUX_MU_IIR_REG = FLUSH_RECE_FIFO;
+}
+
+uint8_t MiniSerial::read(){
+    return AUX_MU_IO_REG;
+}

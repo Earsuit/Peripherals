@@ -70,6 +70,9 @@ class MiniSerial : protected Peripherals{
     MiniSerial():Peripherals(AUX_ADDR_BASE){_addr = getAddr();}
     void begin(char* argv0, uint32_t baudRate);
     void write(uint8_t data);
+    bool available();
+    void flush();
+    uint8_t read();
 };
 
 
