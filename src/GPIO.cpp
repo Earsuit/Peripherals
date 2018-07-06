@@ -5,7 +5,7 @@ GPIO::~GPIO(){
     int size = getNumUsedPins();
     for(int i=0;i<size;i++){
         pinMode(pins[i],INPUT);
-        pull_up_off_down(pins[i],UP);
+        pull_up_off_down(pins[i],DOWN);
     }
 }
 

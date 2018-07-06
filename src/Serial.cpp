@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 void Serial::begin(char* argv0, float baudRate){
-     //log to stderr
+    //log to stderr
     FLAGS_alsologtostderr = 1;
     //INFO, WARNING, ERROR, and FATAL are 0, 1, 2, and 3, respectively.
     FLAGS_minloglevel = 0;
@@ -23,11 +23,12 @@ void Serial::begin(char* argv0, float baudRate){
 
 	CR = 0x00;		//disable the uart
 	usleep(1000);	//wait for transmission complete
+	ITCR = 0x00;    //disable self-test
 	ICR = 0x7FF;	//clear the interrupt
-	LCRH &= ~0x10;	//flush FIFO
-    LCRH |= 0x70;   //WLEN, FEN
-    CR = 0x300;      //RXE, TXE
-	CR = 1;			//UARTEN
+	LCRH &= ~FEN;	//flush FIFO
+    LCRH |= FEN | WLEN_8;   
+    CR = RXE | TXE;      
+	CR = UARTEN;
 	LOG(INFO)<<"Serial begin!";
 }
 
@@ -35,6 +36,19 @@ void Serial::testFIFO(){
 	ITCR = 2;
 	TDR = 0x1C;
 	usleep(5000);
-	int data = DR & 0xFF;
+	int data = DR & DATA;
 	LOG(INFO)<<"Data: "<<std::hex<<data;
+}
+
+bool Serial::available(){
+	if(FR & RXFE)
+		return true;
+	else
+		return false;
+}
+
+void Serial::write(uint8_t data){
+	while(!(FR & TXFE));
+	LOG(INFO)<<"Ready to transmit.";
+	DR = data;
 }

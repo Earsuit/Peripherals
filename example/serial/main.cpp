@@ -1,7 +1,8 @@
-#include "Serial.h"
+#include "MiniSerial.h"
 
 int main(int argc,char* argv[]){
-    Serial serial;
+    MiniSerial serial;
     serial.begin(argv[0],115200);
-    serial.testFIFO();
+    for(int i=0;i<10;i++)
+        serial.write(i);
 }
