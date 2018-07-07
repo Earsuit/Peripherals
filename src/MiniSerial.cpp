@@ -2,14 +2,7 @@
 #include <glog/logging.h>
 #include <unistd.h>
 
-void MiniSerial::begin(char* argv0, uint32_t baudRate){
-    //log to stderr
-    FLAGS_alsologtostderr = 1;
-    //INFO, WARNING, ERROR, and FATAL are 0, 1, 2, and 3, respectively.
-    FLAGS_minloglevel = 2;
-    google::InitGoogleLogging(argv0);
-    LOG(INFO)<<"Serial debugging begin!";
-
+void MiniSerial::begin(uint32_t baudRate){
     //set the cooresponding GPIO pins to the I2C mode and turn off the pull up/down resistor
     _gpio.pinMode(GPIO_TXD1_PIN,ALT5);
     _gpio.pinMode(GPIO_RXD1_PIN,ALT5);

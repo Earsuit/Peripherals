@@ -6,8 +6,8 @@
 #include <iostream>
 
 int main(int argc,char* argv[]){
-    MiniSerial serial;
-    serial.begin(argv[0],115200);
+    MiniSerial serial(argv[0]);
+    serial.begin(115200);
     int count = 0;
     while(count<100){
         if(serial.available()){

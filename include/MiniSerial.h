@@ -10,6 +10,7 @@
 #include "Peripherals.h"
 #include <stdint.h>
 #include "GPIO.h"
+#include <glog/logging.h>
 
 #define AUX_ADDR_BASE (BCM2837_PERI_BASE + 0x215000) 
 #define SYSTEM_CLK_FREQ 250000000   //250MHz
@@ -67,8 +68,16 @@ class MiniSerial : protected Peripherals{
     GPIO _gpio;
 
     public:
-    MiniSerial():Peripherals(AUX_ADDR_BASE){_addr = getAddr();}
-    void begin(char* argv0, uint32_t baudRate);
+    MiniSerial(const char* argv0):Peripherals(AUX_ADDR_BASE){
+        _addr = getAddr();
+        //log to stderr
+        FLAGS_alsologtostderr = 1;
+        //INFO, WARNING, ERROR, and FATAL are 0, 1, 2, and 3, respectively.
+        FLAGS_minloglevel = 0;
+        google::InitGoogleLogging(argv0);
+        LOG(INFO)<<"Serial debugging begin!";
+    }
+    void begin(uint32_t baudRate);
     void write(uint8_t data);
     bool available();
     void flush();
