@@ -8,8 +8,13 @@ void setup() {
 }
 
 void loop() {
-    for(int i=0;i<5;i++)
-        Serial1.write(i);
+    if(Serial.available()){
+        if(Serial.read()=='a'){
+            for(int i=0;i<15;i++)
+                Serial1.write(i);
+        }
+    }
+    
 }
 
 

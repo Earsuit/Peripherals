@@ -62,7 +62,7 @@
 #define FLUSH_TRANS_FIFO 0x4
 #define FLUSH_RECE_FIFO 0x2
 
-#define DEFAULT_TIMEOUT 10000  //10ms
+#define DEFAULT_TIMEOUT 1000  //1ms
 
 class MiniSerial : protected Peripherals{
     private:

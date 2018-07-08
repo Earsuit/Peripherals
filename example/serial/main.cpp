@@ -10,8 +10,10 @@ int main(int argc,char* argv[]){
     serial.begin(115200);
     uint8_t buffer[10];
     serial.flush();
-    int count = serial.read(buffer,10);
-    std::cout<<"N: "<<count<<std::endl;
-    for(int i=0;i<count;i++)
-        std::cout<<int(buffer[i])<<std::endl;
+    while(true){
+        int count = serial.read(buffer,15);
+        std::cout<<"N: "<<count<<std::endl;
+        for(int i=0;i<count;i++)
+            std::cout<<int(buffer[i])<<std::endl;
+    }
 }
