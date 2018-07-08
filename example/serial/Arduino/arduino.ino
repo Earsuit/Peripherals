@@ -8,11 +8,8 @@ void setup() {
 }
 
 void loop() {
-    if(Serial1.available()){
-        uint8_t a = Serial1.read();
-        Serial.println(a,HEX);
-    }
-    Serial1.write(0x12);
+    for(int i=0;i<5;i++)
+        Serial1.write(i);
 }
 
 

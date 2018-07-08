@@ -62,10 +62,13 @@
 #define FLUSH_TRANS_FIFO 0x4
 #define FLUSH_RECE_FIFO 0x2
 
+#define DEFAULT_TIMEOUT 10000  //10ms
+
 class MiniSerial : protected Peripherals{
     private:
     uint32_t* _addr;
     GPIO _gpio;
+    int _timeout;
 
     public:
     MiniSerial(const char* argv0):Peripherals(AUX_ADDR_BASE){
@@ -73,7 +76,7 @@ class MiniSerial : protected Peripherals{
         //log to stderr
         FLAGS_alsologtostderr = 1;
         //INFO, WARNING, ERROR, and FATAL are 0, 1, 2, and 3, respectively.
-        FLAGS_minloglevel = 0;
+        FLAGS_minloglevel = 1;
         google::InitGoogleLogging(argv0);
         LOG(INFO)<<"Serial debugging begin!";
     }
@@ -82,6 +85,8 @@ class MiniSerial : protected Peripherals{
     bool available();
     void flush();
     uint8_t read();
+    void setTimeout(int timeout);
+    int read(uint8_t* buffer, int num);
 };
 
 

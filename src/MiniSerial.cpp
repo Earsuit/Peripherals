@@ -13,11 +13,13 @@ void MiniSerial::begin(uint32_t baudRate){
     AUX_ENABLES = UART_ENABLE;
     //baud rate
     AUX_MU_BAUD_REG = SYSTEM_CLK_FREQ/(8*baudRate)-1;
-    LOG(INFO)<<AUX_MU_BAUD_REG;
     //Data size
     AUX_MU_LCR_REG = DATA_SIZE_8;
     //Transmitter & receiver enable
     AUX_MU_CNTL_REG = TRANSMITTER_ENABLE | RECEIVER_ENABLE;
+
+    _timeout = DEFAULT_TIMEOUT;
+
     LOG(INFO)<<"Serial begin!";
 }
 
@@ -37,4 +39,25 @@ void MiniSerial::flush(){
 
 uint8_t MiniSerial::read(){
     return AUX_MU_IO_REG;
+}
+
+void MiniSerial::setTimeout(int timeout){
+    _timeout = timeout;
+}
+
+int MiniSerial::read(uint8_t* buffer, int num){
+    int count = 0;
+    int tmp = _timeout;
+    while( count!=num && tmp != 0){
+        if(available()){
+            buffer[count++] = AUX_MU_IO_REG;
+            LOG(INFO)<<buffer[count-1];
+        }else{
+            tmp--;
+            usleep(1);   //1us
+        }
+        if(tmp==0)
+            LOG(WARNING)<<"Read timeout.";       
+    }
+    return count;
 }
