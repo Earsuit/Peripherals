@@ -7,7 +7,7 @@
 
 int main(int argc,char* argv[]){
     MiniSerial serial(argv[0]);
-    serial.begin(115200);
+    serial.begin(230400);
     uint8_t buffer[10];
     serial.flush();
     while(true){
