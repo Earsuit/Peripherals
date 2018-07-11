@@ -2,6 +2,9 @@
     When the deconstuctor of this class is invoked, the uart pins will be set to input mode and turn on pull 
     down resistor, which will cause the receiver think there is a new start bit (HIGH -> LOW), and the data 
     following this start bit is 0x00.
+
+    To make the mini uart works fine, it's necessary to set the core_freq in /boot/config.txt to 250. Although
+    the default is 250Mhz, you still need to uncomment that line and reboot.
 */
 
 #ifndef MINI_SERIAL_H_
