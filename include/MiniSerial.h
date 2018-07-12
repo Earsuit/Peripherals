@@ -20,7 +20,7 @@
 #define GPIO_TXD1_PIN 14 
 #define GPIO_RXD1_PIN 15
 
-#define AUX_IRQ *(_adde)
+#define AUX_IRQ *(_addr)
 #define AUX_ENABLES *(_addr+1)
 #define AUX_MU_IO_REG *(_addr+16)
 #define AUX_MU_IER_REG *(_addr+17)
@@ -66,6 +66,7 @@
 #define FLUSH_RECE_FIFO 0x2
 
 #define DEFAULT_TIMEOUT 1000  //1ms
+#define MAX_FIFO 8
 
 class MiniSerial : protected Peripherals{
     private:
@@ -85,6 +86,7 @@ class MiniSerial : protected Peripherals{
     }
     void begin(uint32_t baudRate);
     void write(uint8_t data);
+    void write(uint8_t* data,int num);
     bool available();
     void flush();
     uint8_t read();

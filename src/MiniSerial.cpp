@@ -29,6 +29,23 @@ void MiniSerial::write(uint8_t data){
     while(!(AUX_MU_STAT_REG & TRANS_DONE));
 }
 
+void MiniSerial::write(uint8_t* data,int num){
+    LOG(INFO)<<"Begin writting buffer!";
+    int index = 0;
+    while(num>0){
+        int spareFIFO = MAX_FIFO - TRANS_FIFO_LEVEL;
+        LOG(INFO)<<"Spare FIFO: "<<spareFIFO;
+        //if the num is less than the empty FIFO space, write them all 
+        spareFIFO = spareFIFO<num?spareFIFO:num;
+        for(int i=0;i<spareFIFO;i++)
+            AUX_MU_IO_REG = data[index++];
+        num = num>spareFIFO?(num-spareFIFO):0;
+        LOG(INFO)<<"Remaining bytes after a cycle: "<<num;
+    }
+    while(!(AUX_MU_STAT_REG & TRANS_DONE));
+    LOG(INFO)<<"Writing buffer done";
+}
+
 bool MiniSerial::available(){
     return AUX_MU_STAT_REG & DATA_READY;
 }
