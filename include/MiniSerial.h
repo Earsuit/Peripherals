@@ -14,6 +14,7 @@
 #include <stdint.h>
 #include "GPIO.h"
 #include <glog/logging.h>
+#include <sys/time.h>
 
 #define AUX_ADDR_BASE (BCM2837_PERI_BASE + 0x215000) 
 #define SYSTEM_CLK_FREQ 250000000   //250MHz
@@ -65,7 +66,7 @@
 #define FLUSH_TRANS_FIFO 0x4
 #define FLUSH_RECE_FIFO 0x2
 
-#define DEFAULT_TIMEOUT 1000  //1ms
+#define DEFAULT_TIMEOUT 10  //1ms
 #define MAX_FIFO 8
 
 class MiniSerial : protected Peripherals{
@@ -73,6 +74,7 @@ class MiniSerial : protected Peripherals{
     uint32_t* _addr;
     GPIO _gpio;
     int _timeout;
+    struct timeval _start,_end;
 
     public:
     MiniSerial(const char* argv0):Peripherals(AUX_ADDR_BASE){
