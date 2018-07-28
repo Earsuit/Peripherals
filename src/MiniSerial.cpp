@@ -67,15 +67,16 @@ int MiniSerial::read(uint8_t* buffer, int num){
     int tmp = _timeout;
     double dur = 0;
     gettimeofday(&_start,NULL);
+    double start = _start.tv_sec*10e6+_start.tv_usec;
     while( count!=num && dur < _timeout){
         if(available()){
             buffer[count++] = AUX_MU_IO_REG;
             LOG(INFO)<<buffer[count-1];
         }
         gettimeofday(&_end,NULL);
-        dur = ((_end.tv_sec*10e6 + _end.tv_usec)-(_start.tv_sec*10e6+_start.tv_usec))*1e-3;
-        if(dur >= _timeout)
-            LOG(WARNING)<<"Read timeout.";       
+        dur = ((_end.tv_sec*10e6 + _end.tv_usec)-start)*1e-3;       
     }
+    if(dur >= _timeout)
+        LOG(WARNING)<<"Read timeout.";
     return count;
 }
