@@ -46,5 +46,6 @@ void GPIO::pull_up_off_down(int pin,int type){
     for(int i=0;i<150;i++);
     GPPUDCLK(pin) = (1<<(pin%31));
     for(int i=0;i<150;i++);
+    GPPUD = 0x00;
     GPPUDCLK(pin) = 0x00;
 }
